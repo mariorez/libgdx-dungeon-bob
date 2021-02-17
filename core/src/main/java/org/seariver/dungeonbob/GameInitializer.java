@@ -1,6 +1,12 @@
 package org.seariver.dungeonbob;
 
 import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.Game;
 
-public class GameInitializer extends ApplicationAdapter {
+public class GameInitializer extends Game {
+
+    @Override
+    public void create() {
+        setScreen(new GameScreen(this));
+    }
 }
