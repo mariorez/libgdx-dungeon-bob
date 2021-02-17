@@ -14,10 +14,13 @@ public class GameScreen implements Screen {
     OrthographicCamera camera;
 
     public GameScreen(GameInitializer game) {
+
         this.game = game;
+
         // get window dimensions and set our viewport dimensions
         float height = Gdx.graphics.getHeight();
         float width = Gdx.graphics.getWidth();
+
         // set our camera viewport to window dimensions
         camera = new OrthographicCamera(width, height);
         // center the camera at w/2,h/2

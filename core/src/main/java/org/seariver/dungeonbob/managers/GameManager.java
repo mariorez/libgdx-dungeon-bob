@@ -35,6 +35,8 @@ public class GameManager {
     public static void renderGame(SpriteBatch batch) {
         // draw the background
         backgroundSprite.draw(batch);
+
+        bob.update();
         // Render(draw) the bob
         bob.render(batch);
     }
