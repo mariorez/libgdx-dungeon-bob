@@ -78,8 +78,6 @@ public class Bob {
         }
         // create a new animation sequence with the walk frames and time period of specified seconds
         walkAnimation = new Animation(ANIMATION_TIME_PERIOD, textureArray, Animation.PlayMode.LOOP);
-        // set the animation to loop
-        walkAnimation.setPlayMode(Animation.PlayMode.LOOP);
         // get initial frame
         currentFrame = walkAnimation.getKeyFrame(stateTime, true);
     }
