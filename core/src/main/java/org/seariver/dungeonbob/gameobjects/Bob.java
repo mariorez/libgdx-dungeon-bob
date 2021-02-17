@@ -23,10 +23,16 @@ public class Bob {
     private static int ANIMATION_FRAME_SIZE = 8; // this specifies the number of frames(images) that we are using for animation
     private static float ANIMATION_TIME_PERIOD = 0.08f;// this specifies the time between two consecutive frames of animation
 
+    enum Direction {LEFT, RIGHT}
+
+    Direction direction = Direction.RIGHT; //denotes player's direction. defaulted to right
+
     public void update() {
         if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
+            direction = Direction.LEFT;
             move(-X_MOVE_UNITS, 0);
         } else if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
+            direction = Direction.RIGHT;
             move(X_MOVE_UNITS, 0);
         } else {
             currentFrame = walkAnimation.getKeyFrame(0, true);
@@ -35,6 +41,11 @@ public class Bob {
 
     public void render(SpriteBatch batch) {
         bobSprite.setRegion(currentFrame);
+        if (direction == Direction.RIGHT) {
+            bobSprite.setFlip(false, false);
+        } else {
+            bobSprite.setFlip(true, false);
+        }
         bobSprite.draw(batch);
     }
 
@@ -49,6 +60,7 @@ public class Bob {
     }
 
     public void initialize(float width, float height, Texture walkSheet) {
+
         this.walkSheet = walkSheet; // save the sprite sheet
 
         // instantiate bob sprite
