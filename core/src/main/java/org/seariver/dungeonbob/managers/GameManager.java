@@ -15,9 +15,8 @@ public class GameManager {
 
     public static void initialize(float width, float height) {
         // instantiate the bob
-        bob = new Bob();
         bobSpriteSheet = new Texture(Gdx.files.internal("bob_spritesheet.png"));
-        bob.initialize(width, height, bobSpriteSheet);
+        bob = new Bob(width, height, bobSpriteSheet);
 
         //load background texture
         backgroundTexture = new Texture(Gdx.files.internal("background.png"));
