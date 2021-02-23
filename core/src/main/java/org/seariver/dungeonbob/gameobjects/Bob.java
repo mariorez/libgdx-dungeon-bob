@@ -16,6 +16,7 @@ public class Bob {
 
     Sprite sprite; //sprite to display Bob
     Animation<TextureRegion> walkAnimation;
+    TextureRegion walkSheet;   // sprite sheet
     TextureRegion currentFrame;
     float stateTime;
 
@@ -28,16 +29,18 @@ public class Bob {
 
     Direction direction = RIGHT; //denotes player's direction. defaulted to right
 
-    public Bob(float width, float height, Texture walkSheet) {
+    public Bob(float width, float height, TextureRegion walkSheet) {
+
+        this.walkSheet = walkSheet;
         // instantiate bob sprite
         sprite = new Sprite();
         sprite.setSize(
-                (walkSheet.getWidth() / ANIMATION_FRAME_SIZE) * (width / BOB_RESIZE_FACTOR),
-                walkSheet.getHeight() * (height / BOB_RESIZE_FACTOR));
+                (walkSheet.getRegionWidth() / ANIMATION_FRAME_SIZE) * (width / BOB_RESIZE_FACTOR),
+                walkSheet.getRegionHeight() * (height / BOB_RESIZE_FACTOR));
         setPosition(width / 2f, 0);
 
         //split the sprite sheet into different textures
-        TextureRegion[][] tmp = TextureRegion.split(walkSheet, walkSheet.getWidth() / ANIMATION_FRAME_SIZE, walkSheet.getHeight());
+        TextureRegion[][] tmp = walkSheet.split(walkSheet.getRegionWidth() / ANIMATION_FRAME_SIZE, walkSheet.getRegionHeight());
         Array<TextureRegion> textureArray = new Array<>();
         for (int c = 0; c < ANIMATION_FRAME_SIZE; c++) {
             textureArray.add(tmp[0][c]);
