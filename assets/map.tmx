@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="50" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="25">
+ <tileset firstgid="1" name="tileset" tilewidth="16" tileheight="16" tilecount="616" columns="22">
+  <image source="tileset.png" width="352" height="462"/>
+  <tile id="0">
+   <properties>
+    <property name="type" value="red-brick"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="617" name="crystals" tilewidth="16" tileheight="16" tilecount="8" columns="8">
+  <image source="crystals.png" width="128" height="16"/>
+  <tile id="0">
+   <animation>
+    <frame tileid="0" duration="100"/>
+    <frame tileid="1" duration="100"/>
+    <frame tileid="2" duration="100"/>
+    <frame tileid="3" duration="100"/>
+    <frame tileid="4" duration="100"/>
+    <frame tileid="5" duration="100"/>
+    <frame tileid="6" duration="100"/>
+    <frame tileid="7" duration="100"/>
+   </animation>
+  </tile>
+ </tileset>
+ <layer id="1" name="Background" width="50" height="20" locked="1">
+  <data encoding="base64" compression="zlib">
+   eJztw0ENAAAMA6HTVf/CJmMfSFg1VVVV9fUBQZTikQ==
+  </data>
+ </layer>
+ <layer id="2" name="Wall" width="50" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRAAKZTAPtglEwkGCoxz8jFjzcwUjx52ACA5nGhnoehYGnA5hoQVazAzEHGg1jkwJ+08Ef2Mo1GJYFYjk0GsZGB72MEIwNUNsfuNxLDUBvf9AK0MoftAx7bACfPwQpKK8AnN8LvQ==
+  </data>
+ </layer>
+ <objectgroup id="3" name="Object Layer 1" locked="1">
+  <object id="4" gid="7" x="256" y="160" width="16" height="16"/>
+  <object id="5" gid="7" x="256" y="176" width="16" height="16"/>
+  <object id="6" gid="7" x="240" y="176" width="16" height="16"/>
+  <object id="7" gid="7" x="240" y="192" width="16" height="16"/>
+  <object id="8" gid="7" x="224" y="192" width="16" height="16"/>
+  <object id="9" gid="7" x="336" y="144" width="16" height="16"/>
+  <object id="10" gid="7" x="320" y="144" width="16" height="16"/>
+  <object id="11" gid="7" x="304" y="144" width="16" height="16"/>
+  <object id="12" gid="7" x="272" y="160" width="16" height="16"/>
+  <object id="13" gid="7" x="272" y="144" width="16" height="16"/>
+  <object id="14" gid="7" x="288" y="144" width="16" height="16"/>
+  <object id="15" gid="7" x="352" y="128" width="16" height="16"/>
+  <object id="16" gid="7" x="368" y="128" width="16" height="16"/>
+  <object id="17" gid="7" x="352" y="144" width="16" height="16"/>
+  <object id="18" gid="7" x="336" y="160" width="16" height="16"/>
+  <object id="20" gid="7" x="304" y="160" width="16" height="16"/>
+  <object id="23" x="240" y="16" width="144" height="64"/>
+ </objectgroup>
+ <imagelayer id="4" name="House" locked="1" offsetx="80" offsety="32">
+  <image source="bob.png" width="63" height="102"/>
+ </imagelayer>
+</map>

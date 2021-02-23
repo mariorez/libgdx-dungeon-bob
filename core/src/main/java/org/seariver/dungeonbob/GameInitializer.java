@@ -1,6 +1,5 @@
 package org.seariver.dungeonbob;
 
-import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Game;
 
 public class GameInitializer extends Game {
