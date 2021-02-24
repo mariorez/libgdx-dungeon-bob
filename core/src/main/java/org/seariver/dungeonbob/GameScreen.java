@@ -11,7 +11,7 @@ public class GameScreen implements Screen {
 
     private GameInitializer game;
     SpriteBatch batch; // spritebatch for drawing
-    OrthographicCamera camera;
+    public static OrthographicCamera camera;
 
     public GameScreen(GameInitializer game) {
 
@@ -44,6 +44,8 @@ public class GameScreen implements Screen {
         batch.begin();
         GameManager.renderGame(batch);
         batch.end();
+
+        GameManager.renderer.render();
     }
 
     @Override

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="35" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="25">
+ <tileset firstgid="1" name="tileset" tilewidth="16" tileheight="16" tilecount="616" columns="22">
+  <image source="../tileset.png" width="352" height="462"/>
+  <tile id="0">
+   <properties>
+    <property name="type" value="red-brick"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="617" name="crystals" tilewidth="16" tileheight="16" tilecount="8" columns="8">
+  <image source="../crystals.png" width="128" height="16"/>
+  <tile id="0">
+   <animation>
+    <frame tileid="0" duration="100"/>
+    <frame tileid="1" duration="100"/>
+    <frame tileid="2" duration="100"/>
+    <frame tileid="3" duration="100"/>
+    <frame tileid="4" duration="100"/>
+    <frame tileid="5" duration="100"/>
+    <frame tileid="6" duration="100"/>
+    <frame tileid="7" duration="100"/>
+   </animation>
+  </tile>
+ </tileset>
+ <layer id="2" name="Wall" width="35" height="20" locked="1">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjILhDxjRMLl68ZlJjtnE2D0QeqkNaBU+IxXgSnvUDF9axhkp7qd1uiHF7MHgFkrjG1+YUzst4YtnXDiaRhgAIxoIFg==
+  </data>
+ </layer>
+ <layer id="5" name="Crystals" width="35" height="20" locked="1">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjALagEymUbNHwSggB9AiDY6m64EDo2E/8AAAGgUCgw==
+  </data>
+ </layer>
+</map>
