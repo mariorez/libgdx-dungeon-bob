@@ -10,6 +10,7 @@ import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.math.MathUtils;
 import org.seariver.dungeonbob.GameConstants;
 import org.seariver.dungeonbob.GameScreen;
 import org.seariver.dungeonbob.gameobjects.Bob;
@@ -71,11 +72,10 @@ public class GameManager {
         GameScreen.camera.position.x = bob.sprite.getX();
 
         // if the viewport goes outside the map's dimensions update the camera's position correctly
-        if ((GameScreen.camera.position.x - GameScreen.camera.viewportWidth / 2) < 0) {
-            GameScreen.camera.position.x = GameScreen.camera.viewportWidth / 2;
-        } else if ((GameScreen.camera.position.x + GameScreen.camera.viewportWidth / 2) >= mapWidth) {
-            GameScreen.camera.position.x = mapWidth - GameScreen.camera.viewportWidth / 2;
-        }
+        GameScreen.camera.position.x = MathUtils.clamp(
+                GameScreen.camera.position.x,
+                GameScreen.camera.viewportWidth / 2,
+                mapWidth - GameScreen.camera.viewportWidth / 2);
 
         GameScreen.camera.update();
         renderer.setView(GameScreen.camera);
