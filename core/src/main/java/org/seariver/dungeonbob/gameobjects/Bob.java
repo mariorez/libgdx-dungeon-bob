@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;
+import org.seariver.dungeonbob.GameConstants;
 
 import static org.seariver.dungeonbob.gameobjects.Bob.Direction.LEFT;
 import static org.seariver.dungeonbob.gameobjects.Bob.Direction.RIGHT;
@@ -19,8 +20,8 @@ public class Bob {
     TextureRegion currentFrame;
     float stateTime;
 
-    public static final float BOB_RESIZE_FACTOR = 750f;
-    private static final float X_MOVE_UNITS = 3f;// units bob will move in x direction
+    public static final float BOB_RESIZE_FACTOR = 1650f;
+    private static final float X_MOVE_UNITS = 0.1f;// units bob will move in x direction
     private static int ANIMATION_FRAME_SIZE = 8; // this specifies the number of frames(images) that we are using for animation
     private static float ANIMATION_TIME_PERIOD = 0.08f;// this specifies the time between two consecutive frames of animation
 
@@ -36,7 +37,9 @@ public class Bob {
         sprite.setSize(
                 (walkSheet.getRegionWidth() / ANIMATION_FRAME_SIZE) * (width / BOB_RESIZE_FACTOR),
                 walkSheet.getRegionHeight() * (height / BOB_RESIZE_FACTOR));
-        setPosition(width / 2f, 0);
+        //scale bob's size w.r.t unit scale
+        sprite.setSize(sprite.getWidth() * GameConstants.unitScale, sprite.getHeight() * GameConstants.unitScale);
+        setPosition(0, 1);
 
         //split the sprite sheet into different textures
         TextureRegion[][] tmp = walkSheet.split(walkSheet.getRegionWidth() / ANIMATION_FRAME_SIZE, walkSheet.getRegionHeight());
