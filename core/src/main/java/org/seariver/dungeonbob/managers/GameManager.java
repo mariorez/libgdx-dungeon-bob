@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
@@ -27,20 +28,8 @@ public class GameManager {
     static TiledMap map;
     public static OrthogonalTiledMapRenderer renderer; // map renderer
 
-    public static void loadAssets() {
-        // queue the assets for loading
-        assetManager.load(GameConstants.backGroundImage, Texture.class);
-
-        assetManager.load(GameConstants.texturePack, TextureAtlas.class);
-
-        // set the tiled map loader for the AssetManager
-        assetManager.setLoader(TiledMap.class, new TmxMapLoader());
-        //load the tiled map
-        assetManager.load(GameConstants.level1, TiledMap.class);
-
-        //blocking method to load all assets
-        assetManager.finishLoading();
-    }
+    public static int mapWidth;
+    public static int mapHeight;
 
     public static void initialize(float width, float height) {
         assetManager = new AssetManager();
@@ -60,12 +49,13 @@ public class GameManager {
 
         // get the map instance loaded
         map = assetManager.get(GameConstants.level1);
-        renderer = new OrthogonalTiledMapRenderer(map, GameConstants.unitScale);
+        setMapDimensions();
 
-        GameScreen.camera.setToOrtho(false, 35,20); // show 35x20 map tiles on screen
+        GameScreen.camera.setToOrtho(false, 15, 13); // show 35x20 map tiles on screen
         GameScreen.camera.update();
 
         // set the renderer's view to the game's main camera
+        renderer = new OrthogonalTiledMapRenderer(map, GameConstants.unitScale);
         renderer.setView(GameScreen.camera);
     }
 
@@ -76,10 +66,44 @@ public class GameManager {
         // update and render (draw) the bob
         bob.update();
         bob.render(batch);
+
+        //update the camera's x position to Bob's x position
+        GameScreen.camera.position.x = bob.sprite.getX();
+
+        // if the viewport goes outside the map's dimensions update the camera's position correctly
+        if ((GameScreen.camera.position.x - GameScreen.camera.viewportWidth / 2) < 0) {
+            GameScreen.camera.position.x = GameScreen.camera.viewportWidth / 2;
+        } else if ((GameScreen.camera.position.x + GameScreen.camera.viewportWidth / 2) >= mapWidth) {
+            GameScreen.camera.position.x = mapWidth - GameScreen.camera.viewportWidth / 2;
+        }
+
+        GameScreen.camera.update();
+        renderer.setView(GameScreen.camera);
     }
 
     public static void dispose() {
         //dispose the background texture
         assetManager.clear();
+    }
+
+    public static void loadAssets() {
+        // queue the assets for loading
+        assetManager.load(GameConstants.backGroundImage, Texture.class);
+
+        assetManager.load(GameConstants.texturePack, TextureAtlas.class);
+
+        // set the tiled map loader for the AssetManager
+        assetManager.setLoader(TiledMap.class, new TmxMapLoader());
+        //load the tiled map
+        assetManager.load(GameConstants.level1, TiledMap.class);
+
+        //blocking method to load all assets
+        assetManager.finishLoading();
+    }
+
+    static void setMapDimensions() {
+        MapProperties properties = map.getProperties();
+        mapHeight = Integer.parseInt(properties.get("height").toString());
+        mapWidth = Integer.parseInt(properties.get("width").toString());
     }
 }

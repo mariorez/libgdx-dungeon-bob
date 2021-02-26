@@ -14,7 +14,7 @@ import static org.seariver.dungeonbob.gameobjects.Bob.Direction.RIGHT;
 
 public class Bob {
 
-    Sprite sprite; //sprite to display Bob
+    public Sprite sprite; //sprite to display Bob
     Animation<TextureRegion> walkAnimation;
     TextureRegion walkSheet;   // sprite sheet
     TextureRegion currentFrame;
